@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillSwap - My Profile</title>
+
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">⇄Skill<span>Swap</span></div>
+
+        <nav>
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a class="active" href="profile.html">👤 My Profile</a>
+            <a href="matches.html">🤝 Smart Matches</a>
+            <a href="#">💬 Chat</a>
+            <a href="LearningSession.html">📅 Sessions</a>
+            <a href="#">⭐ Feedback</a>
+        </nav>
+
+        <a href="login.html" class="logout">↪ Logout</a>
+
+    </aside>
+
+
+    <!-- Main -->
+    <main class="main">
+
+        <!-- Header -->
+        <header class="topbar">
+
+            <div>
+                <h1>My Profile</h1>
+                <p>Manage your SkillSwap profile and skills.</p>
+            </div>
+
+            <div class="profile-circle">P</div>
+
+        </header>
+
+
+        <!-- Profile Card -->
+        <section class="profile-card">
+
+            <div class="profile-top">
+
+                <div class="big-avatar" id="profileAvatar">
+                    P
+                </div>
+
+                <div class="profile-info">
+
+                    <h2 id="profileName">Prerita Shrivastava</h2>
+
+                    <p id="profileEmail">
+                        prerita@example.com
+                    </p>
+
+                    <span class="level">
+                        Intermediate
+                    </span>
+
+                </div>
+
+                <button class="edit-btn" onclick="editProfile()">
+                    ✏️ Edit Profile
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- About -->
+        <section class="card">
+
+            <h2>About Me</h2>
+
+            <p id="bio">
+                CSE student passionate about web development,
+                programming and learning new technologies.
+            </p>
+
+        </section>
+
+
+        <!-- Skills -->
+        <section class="two-column">
+
+            <!-- Teach -->
+            <div class="card">
+
+                <div class="card-header">
+
+                    <h2>📚 Skills I Teach</h2>
+
+                    <button onclick="addSkill('teach')">
+                        + Add Skill
+                    </button>
+
+                </div>
+
+                <div class="skills" id="teachSkills">
+
+                    <span class="skill">
+                        JavaScript
+                        <button onclick="deleteSkill(this)">×</button>
+                    </span>
+
+                    <span class="skill">
+                        HTML
+                        <button onclick="deleteSkill(this)">×</button>
+                    </span>
+
+                    <span class="skill">
+                        CSS
+                        <button onclick="deleteSkill(this)">×</button>
+                    </span>
+
+                    <span class="skill">
+                        Node.js
+                        <button onclick="deleteSkill(this)">×</button>
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Want -->
+            <div class="card">
+
+                <div class="card-header">
+
+                    <h2>🎯 Skills I Want</h2>
+
+                    <button onclick="addSkill('want')">
+                        + Add Skill
+                    </button>
+
+                </div>
+
+                <div class="skills want" id="wantSkills">
+
+                    <span class="skill">
+                        c++
+                        <button onclick="deleteSkill(this)">×</button>
+                    </span>
+
+                    <span class="skill">
+                        hibernate
+                        <button onclick="deleteSkill(this)">×</button>
+                    </span>
+
+                    <span class="skill">
+                        UI/UX
+                        <button onclick="deleteSkill(this)">×</button>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Availability -->
+        <section class="card">
+
+            <h2>⏰ Availability</h2>
+
+            <div class="availability">
+
+                <div>
+                    <strong>Monday - Friday</strong>
+                    <p>6:00 PM - 9:00 PM</p>
+                </div>
+
+                <div>
+                    <strong>Saturday - Sunday</strong>
+                    <p>10:00 AM - 6:00 PM</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="profileModal">
+
+        <div class="modal-box">
+
+            <h2>Edit Profile</h2>
+
+            <label>Name</label>
+            <input
+                type="text"
+                id="editName"
+                value="Prerita Shrivastav"
+            >
+
+            <label>Email</label>
+            <input
+                type="email"
+                id="editEmail"
+                value="prerita@example.com"
+            >
+
+            <label>About Me</label>
+
+            <textarea id="editBio">CSE student passionate about web development, programming and learning new technologies.</textarea>
+
+            <div class="modal-buttons">
+
+                <button
+                    class="cancel"
+                    onclick="closeModal()">
+                    Cancel
+                </button>
+
+                <button
+                    class="save"
+                    onclick="saveProfile()">
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/profile.js"></script>
+
+</body>
+</html>

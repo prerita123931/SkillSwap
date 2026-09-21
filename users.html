@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users - SkillSwap</title>
+    <!-- Humne external style.css hata diya hai taaki koi purani styling isko block na kare -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .page-content { padding: 30px; }
+        .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .page-header h1 { margin: 0; font-size: 28px; color: #222; }
+        .page-header p { margin: 5px 0 0 0; color: #666; }
+        .search-box { width: 280px; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
+        .table-container { background: white; border-radius: 12px; padding: 20px; overflow-x: auto; box-shadow: 0 3px 15px rgba(0,0,0,0.08); }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #f5f7fb; color: #333; font-weight: 600; }
+        
+        /* FIX: Yahan humne text color ko force kiya hai taaki name aur email gayab na ho */
+        td { color: #333 !important; font-size: 14px; }
+        
+        .status { padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 500; display: inline-block; }
+        .active { background: #e7f8ee; color: #159447; }
+        .blocked { background: #ffe7e7; color: #d93030; }
+        .role { font-weight: 600; }
+        .action-btn { border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer; margin-right: 5px; font-size: 13px; }
+        .block-btn { background: #ffe1e1; color: #d63031; }
+        .unblock-btn { background: #e1f8e9; color: #159447; }
+        .view-btn { background: #e5edff; color: #315dcc; }
+    </style>
+</head>
+<body>
+
+<div class="page-content">
+    <div class="page-header">
+        <div>
+            <h1>Manage Users</h1>
+            <p>View and manage SkillSwap users</p>
+        </div>
+        <input type="text" id="searchUser" class="search-box" placeholder="Search by name or email...">
+    </div>
+
+    <div class="table-container">
+        <table id="usersTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Skill Level</th>
+                    <th>Rating</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="user-name">Prerita Shrivastav</td>
+                    <td class="user-email">prerita@example.com</td>
+                    <td>Intermediate</td>
+                    <td>⭐ 4.8</td>
+                    <td class="role">User</td>
+                    <td><span class="status active">Active</span></td>
+                    <td>
+                        <button class="action-btn view-btn" onclick="viewUser(1)">View</button>
+                        <button class="action-btn block-btn" onclick="toggleUser(this)">Block</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="user-name">Sakshi Jha</td>
+                    <td class="user-email">Sakshi@example.com</td>
+                    <td>Intermediate</td>
+                    <td>⭐ 4.6</td>
+                    <td class="role">User</td>
+                    <td><span class="status active">Active</span></td>
+                    <td>
+                        <button class="action-btn view-btn" onclick="viewUser(2)">View</button>
+                        <button class="action-btn block-btn" onclick="toggleUser(this)">Block</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="user-name">Ananya Singh</td>
+                    <td class="user-email">ananya@example.com</td>
+                    <td>Advanced</td>
+                    <td>⭐ 4.9</td>
+                    <td class="role">User</td>
+                    <td><span class="status active">Active</span></td>
+                    <td>
+                        <button class="action-btn view-btn" onclick="viewUser(3)">View</button>
+                        <button class="action-btn block-btn" onclick="toggleUser(this)">Block</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    document.getElementById("searchUser").addEventListener("keyup", function() {
+        let input = this.value.toLowerCase();
+        let rows = document.querySelectorAll("#usersTable tbody tr");
+
+        rows.forEach(row => {
+            let nameEl = row.querySelector(".user-name");
+            let emailEl = row.querySelector(".user-email");
+            
+            if(nameEl && emailEl) {
+                let name = nameEl.innerText.toLowerCase();
+                let email = emailEl.innerText.toLowerCase();
+                if (name.includes(input) || email.includes(input)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        });
+    });
+
+    function toggleUser(button) {
+        let row = button.closest("tr");
+        let status = row.querySelector(".status");
+
+        if (status.innerText.trim() === "Active") {
+            status.innerText = "Blocked";
+            status.classList.replace("active", "blocked");
+            button.innerText = "Unblock";
+            button.classList.replace("block-btn", "unblock-btn");
+        } else {
+            status.innerText = "Active";
+            status.classList.replace("blocked", "active");
+            button.innerText = "Block";
+            button.classList.replace("unblock-btn", "block-btn");
+        }
+    }
+
+    function viewUser(userId) {
+        alert("Viewing profile of User ID: " + userId);
+    }
+</script>
+</body>
+</html>

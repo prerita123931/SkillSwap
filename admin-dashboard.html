@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - SkillSwap</title>
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            ⇄Skill<span>Swap</span>
+        </div>
+
+        <div class="admin-label">ADMIN PANEL</div>
+
+        <nav>
+            <a href="admin-dashboard.html" class="active">📊 Dashboard</a>
+            <a href="users.html">👥 Users</a>
+            <a href="skills.html">🛠️ Skills</a>
+            <a href="matches.html">🔗 Matches</a>
+            <a href="rating-feedback.html">⭐ Feedback & Reports</a>
+        </nav>
+
+        <div class="logout">
+            <a href="#">↪️ Logout</a>
+        </div>
+
+    </aside>
+
+
+    <!-- Main -->
+    <main>
+
+        <!-- Header -->
+        <header>
+
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p>Monitor and manage the SkillSwap platform.</p>
+            </div>
+
+            <div class="admin-profile">
+                <div class="admin-avatar">A</div>
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Platform Admin</small>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="stat-icon purple">👥</div>
+
+                <div>
+                    <p>Total Users</p>
+                    <h2>1,248</h2>
+                    <span class="growth">↑ 12.5% this month</span>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon blue">🔗</div>
+
+                <div>
+                    <p>Active Matches</p>
+                    <h2>386</h2>
+                    <span class="growth">↑ 8.2% this month</span>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon green">📅</div>
+
+                <div>
+                    <p>Sessions Completed</p>
+                    <h2>2,864</h2>
+                    <span class="growth">↑ 15.4% this month</span>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon yellow">⭐</div>
+
+                <div>
+                    <p>Average Rating</p>
+                    <h2>4.8</h2>
+                    <span class="rating">★★★★★</span>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Main Grid -->
+        <section class="dashboard-grid">
+
+            <!-- Recent Users -->
+            <div class="card users-card">
+
+                <div class="card-header">
+                    <div>
+                        <h2>Recent Users</h2>
+                        <p>Newly registered students</p>
+                    </div>
+
+                    <button onclick="viewUsers()">View All</button>
+                </div>
+
+
+                <div class="user-row">
+
+                    <div class="user-info">
+                        <div class="user-avatar">R</div>
+
+                        <div>
+                            <strong>Rahul Sharma</strong>
+                            <span>rahul@email.com</span>
+                        </div>
+                    </div>
+
+                    <span class="status active-status">Active</span>
+
+                </div>
+
+
+                <div class="user-row">
+
+                    <div class="user-info">
+                        <div class="user-avatar">A</div>
+
+                        <div>
+                            <strong>Ananya Verma</strong>
+                            <span>ananya@email.com</span>
+                        </div>
+                    </div>
+
+                    <span class="status active-status">Active</span>
+
+                </div>
+
+
+                <div class="user-row">
+
+                    <div class="user-info">
+                        <div class="user-avatar">K</div>
+
+                        <div>
+                            <strong>Karan Patel</strong>
+                            <span>karan@email.com</span>
+                        </div>
+                    </div>
+
+                    <span class="status pending-status">Pending</span>
+
+                </div>
+
+
+                <div class="user-row">
+
+                    <div class="user-info">
+                        <div class="user-avatar">N</div>
+
+                        <div>
+                            <strong>Neha Singh</strong>
+                            <span>neha@email.com</span>
+                        </div>
+                    </div>
+
+                    <span class="status active-status">Active</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Matches -->
+            <div class="card">
+
+                <div class="card-header">
+                    <div>
+                        <h2>Recent Matches</h2>
+                        <p>Latest skill connections</p>
+                    </div>
+
+                    <button onclick="viewMatches()">View All</button>
+                </div>
+
+
+                <div class="match-row">
+
+                    <div class="match-person">
+                        <div class="mini-avatar">R</div>
+                        <strong>Rahul</strong>
+                    </div>
+
+                    <div class="exchange">
+                        Python
+                        <span>⇄</span>
+                        JavaScript
+                    </div>
+
+                    <strong class="match-score">94%</strong>
+
+                </div>
+
+
+                <div class="match-row">
+
+                    <div class="match-person">
+                        <div class="mini-avatar">A</div>
+                        <strong>Ananya</strong>
+                    </div>
+
+                    <div class="exchange">
+                        UI/UX
+                        <span>⇄</span>
+                        React
+                    </div>
+
+                    <strong class="match-score">89%</strong>
+
+                </div>
+
+
+                <div class="match-row">
+
+                    <div class="match-person">
+                        <div class="mini-avatar">K</div>
+                        <strong>Karan</strong>
+                    </div>
+
+                    <div class="exchange">
+                        Java
+                        <span>⇄</span>
+                        Python
+                    </div>
+
+                    <strong class="match-score">85%</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Bottom Grid -->
+        <section class="bottom-grid">
+
+            <!-- Sessions -->
+            <div class="card">
+
+                <div class="card-header">
+                     <div>
+                        <h2>Session Overview</h2>
+                        <p>Platform activity</p>
+                    </div>
+                </div>
+
+                <div class="session-stats">
+
+                    <div>
+                        <span class="session-number">128</span>
+                        <p>Today's Sessions</p>
+                    </div>
+
+                    <div>
+                        <span class="session-number">74</span>
+                        <p>Completed</p>
+                    </div>
+
+                    <div>
+                        <span class="session-number">54</span>
+                        <p>Upcoming</p>
+                    </div>
+
+                </div>
+
+                <div class="progress-container">
+
+                    <div class="progress-label">
+                        <span>Session Completion</span>
+                        <strong>78%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-fill"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Feedback & Reports -->
+            <div class="card">
+
+                <div class="card-header">
+                    <div>
+                        <h2>Feedback & Reports</h2>
+                        <p>Items requiring attention</p>
+                    </div>
+
+                    <button onclick="viewReports()">View All</button>
+                </div>
+
+
+                <div class="report-row">
+
+                    <div class="report-icon">⭐</div>
+
+                    <div>
+                        <strong>New Feedback</strong>
+                        <span>24 new reviews received</span>
+                    </div>
+
+                    <b>24</b>
+
+                </div>
+
+
+                <div class="report-row">
+
+                    <div class="report-icon warning">⚠️</div>
+
+                    <div>
+                        <strong>Reported Users</strong>
+                        <span>3 reports need review</span>
+                    </div>
+
+                    <b class="warning-text">3</b>
+
+                </div>
+
+
+                <div class="report-row">
+
+                    <div class="report-icon">💬</div>
+
+                    <div>
+                        <strong>Pending Issues</strong>
+                        <span>8 unresolved requests</span>
+                    </div>
+
+                    <b>8</b>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script >
+        function viewUsers() {alert("Opening Manage Users...");}
+        function viewMatches() {alert("Opening Match Monitoring...");}
+        function viewReports() {alert("Opening Feedback & Reports...");}
+    </script>
+
+</body>
+</html>

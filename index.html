@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap | Learn. Teach. Connect. Grow.</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">⇄Skill<span>Swap</span></div>
+
+        <div class="nav-links">
+            <nav><a href="Dashboard.html">Dashboard</a></nav>
+            <nav><a href="signup.html">signup</a></nav>
+            <nav><a href="login.html">Login</a></nav>
+            <nav><a href="admin-dashboard.html">Admin Information</a></nav>
+        </div>
+
+        <a href="signup.html" class="nav-btn">Get Started</a>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ✦ Peer-to-Peer Skill Exchange
+            </div>
+
+            <h1>
+                Learn Skills.<br>
+                <span>Teach Skills.</span><br>
+                Grow Together.
+            </h1>
+
+            <p>
+                SkillSwap connects students who want to learn
+                with students who have skills to teach.
+            </p>
+
+            <!-- Search -->
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    placeholder="What skill do you want to learn?"
+                >
+
+                <button onclick="findPartner()">
+                    Find Skill Partner
+                </button>
+            </div>
+
+            <!-- Get Started -->
+            <a href="signup.html" class="main-btn">
+                Get Started →
+            </a>
+
+        </div>
+
+
+        <!-- Right Side Card -->
+        <div class="match-card">
+
+            <div class="card-title">
+                ✨ Smart Skill Match
+            </div>
+
+            <div class="student">
+                <div class="avatar">A</div>
+
+                <div>
+                    <h3>You</h3>
+                    <p>Teach: React</p>
+                    <p>Want: Python</p>
+                </div>
+            </div>
+
+            <div class="match-score">
+                <strong>Strong</strong>
+                <small>Match</small>
+            </div>
+
+            <div class="student">
+                <div class="avatar second">R</div>
+
+                <div>
+                    <h3>Rahul</h3>
+                    <p>Teach: Python</p>
+                    <p>Want: React</p>
+                </div>
+            </div>
+
+            <button class="connect-btn">
+                Connect Partner
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Small Features -->
+    <section class="features">
+
+        <div class="feature">
+            <span>🔄</span>
+            <h3>Skill Exchange</h3>
+            <p>Teach what you know, learn what you need.</p>
+        </div>
+
+        <div class="feature">
+            <span>🤝</span>
+            <h3>Smart Matching</h3>
+            <p>Find the right learning partner.</p>
+        </div>
+
+        <div class="feature">
+            <span>🌍</span>
+            <h3>Student Community</h3>
+            <p>Connect with learners everywhere.</p>
+        </div>
+
+    </section>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

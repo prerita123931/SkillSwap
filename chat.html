@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillSwap | Chat</title>
+
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+           
+            <div>
+                <h2>⇄SkillSwap</h2>
+                <span>Learn • Teach • Grow</span>
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a href="admin-dashboard.html" class="nav-item">
+                🏠 Dashboard
+            </a>
+
+            <a href="profile.html" class="nav-item">
+                👤 My Profile
+            </a>
+             <a href="skills.html" class="nav-item">
+                💡 My Skills
+            </a>
+
+            <a href="matches.html" class="nav-item">
+                🔗 Smart Matches
+            </a>
+
+            <a href="chat.html" class="nav-item active">
+                💬 Chat
+            </a>
+            <a href="rating-feedback.html" class="nav-item">
+                ⭐ Feedback
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="nav-item">
+                ⚙️ Settings
+            </a>
+
+            <a href="#" class="nav-item">
+                ↪️ Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- HEADER -->
+
+        <header class="header">
+
+            <div>
+
+                <p class="small-title">
+                    ⇄SKILLSWAP
+                </p>
+
+                <h1>
+                    Messages
+                </h1>
+
+                <p class="subtitle">
+                    Connect with your learning partners and discuss your sessions.
+                </p>
+
+            </div>
+
+
+            <div class="profile">
+                <a href="profile.html" class="profile-circle">P</a>
+
+                <div>
+
+                    <strong>
+                        Prerita
+                    </strong>
+
+                    <small>
+                        Student
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= CHAT CONTAINER ================= -->
+
+        <section class="chat-container">
+
+
+            <!-- ================= CONVERSATIONS ================= -->
+
+            <aside class="conversation-panel">
+
+                <div class="conversation-header">
+
+                    <h2>
+                        Conversations
+                    </h2>
+
+                    <span>
+                        3
+                    </span>
+
+                </div>
+
+
+                <!-- Search -->
+
+                <div class="chat-search">
+
+                    🔍
+
+                    <input
+                        type="text"
+                        id="chatSearch"
+                        placeholder="Search conversations..."
+                    >
+
+                </div>
+
+
+                <!-- Conversation -->
+
+                <div
+                    class="conversation active"
+                    onclick="openChat('Rahul Sharma')"
+                >
+
+                    <div class="chat-avatar blue">
+                        R
+                    </div>
+
+                    <div class="conversation-info">
+
+                        <div class="conversation-name">
+
+                            <strong>
+                                Rahul Sharma
+                            </strong>
+
+                            <small>
+                                2:45 PM
+                            </small>
+                            </div>
+
+                        <p>
+                            We can start with Python basics.
+                        </p>
+
+                    </div>
+
+                    <span class="unread">
+                        2
+                    </span>
+
+                </div>
+
+
+
+                <div
+                    class="conversation"
+                    onclick="openChat('Ananya Verma')"
+                >
+
+                    <div class="chat-avatar pink">
+                        A
+                    </div>
+
+                    <div class="conversation-info">
+
+                        <div class="conversation-name">
+
+                            <strong>
+                                Ananya Verma
+                            </strong>
+
+                            <small>
+                                Yesterday
+                            </small>
+
+                        </div>
+
+                        <p>
+                            I can help you with React.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div
+                    class="conversation"
+                    onclick="openChat('Karan Patel')"
+                >
+
+                    <div class="chat-avatar orange">
+                        K
+                    </div>
+
+                    <div class="conversation-info">
+
+                        <div class="conversation-name">
+
+                            <strong>
+                                Karan Patel
+                            </strong>
+
+                            <small>
+                                Mon
+                            </small>
+
+                        </div>
+
+                        <p>
+                            Thanks for the session!
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+
+            <!-- ================= ACTIVE CHAT ================= -->
+
+            <section class="chat-window">
+
+
+                <!-- Chat Header -->
+
+                <div class="chat-header">
+
+                    <div class="chat-user">
+
+                        <div class="chat-avatar blue">
+                            R
+                        </div>
+
+                        <div>
+
+                            <h3 id="chatUser">
+                                Rahul Sharma
+                            </h3>
+
+                            <p>
+                                🟢 Online
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="chat-actions">
+
+                        <button
+                            class="session-btn"
+                            onclick="scheduleSession()"
+                        >
+                            📅 Schedule Session
+                        </button>
+
+                        <button class="more-btn">
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Skill Exchange -->
+                 <div class="skill-exchange">
+
+                    <div>
+
+                        <span>
+                            SKILL EXCHANGE
+                        </span>
+
+                        <strong>
+                            Python
+                        </strong>
+
+                    </div>
+
+
+                    <div class="exchange-symbol">
+                        ⇄
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            YOU TEACH
+                        </span>
+
+                        <strong>
+                            JavaScript
+                        </strong>
+
+                    </div>
+
+
+                    <div class="match">
+                        94% Match
+                    </div>
+
+                </div>
+
+
+
+                <!-- Messages -->
+
+                <div
+                    class="messages"
+                    id="messages"
+                >
+
+                    <div class="date">
+                        Today
+                    </div>
+
+
+                    <!-- Received -->
+
+                    <div class="message received">
+
+                        <div class="message-avatar blue">
+                            R
+                        </div>
+
+                        <div>
+
+                            <div class="bubble">
+
+                                Hey Sakshi! 👋
+
+                            </div>
+
+                            <small>
+                                2:30 PM
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Sent -->
+
+                    <div class="message sent">
+
+                        <div>
+
+                            <div class="bubble">
+
+                                Hi Rahul! I want to learn Python from the basics.
+
+                            </div>
+
+                            <small>
+                                2:32 PM ✓✓
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Received -->
+
+                    <div class="message received">
+
+                        <div class="message-avatar blue">
+                            R
+                        </div>
+
+                        <div>
+
+                            <div class="bubble">
+
+                                Sure! I can teach you Python fundamentals and basic problem solving.
+
+                            </div>
+
+                            <small>
+                                2:35 PM
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Sent -->
+
+                    <div class="message sent">
+
+                        <div>
+
+                            <div class="bubble">
+
+                                That sounds great! 😊
+
+                            </div>
+
+                            <small>
+                                2:38 PM ✓✓
+                            </small>
+                               </div>
+
+                    </div>
+
+
+
+                    <!-- Received -->
+
+                    <div class="message received">
+
+                        <div class="message-avatar blue">
+                            R
+                        </div>
+
+                        <div>
+
+                            <div class="bubble">
+
+                                We can start with Python basics. When are you available?
+
+                            </div>
+
+                            <small>
+                                2:45 PM
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= INPUT ================= -->
+
+                <div class="message-input-area">
+
+                    <button class="attach">
+                        +
+                    </button>
+
+                    <input
+                        type="text"
+                        id="messageInput"
+                        placeholder="Type a message..."
+                        onkeydown="handleEnter(event)"
+                    >
+
+                    <button
+                        class="emoji"
+                        onclick="addEmoji()"
+                    >
+                        😊
+                    </button>
+
+                    <button
+                        class="send-btn"
+                        onclick="sendMessage()"
+                    >
+                        ➤
+                    </button>
+
+                </div>
+
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+
+    <script src="js/chat.js"></script>
+
+</body>
+</html>
+

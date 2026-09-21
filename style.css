@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #0f172a;
+    color: white;
+}
+
+/* Navbar */
+
+.navbar {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #8b5cf6;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: #a78bfa;
+}
+
+.nav-btn {
+    text-decoration: none;
+    color: white;
+    background: #7c3aed;
+    padding: 11px 20px;
+    border-radius: 8px;
+}
+
+
+/* Hero */
+
+.hero {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px 10%;
+    gap: 70px;
+
+    background:
+        radial-gradient(circle at 80% 40%, #4c1d9560, transparent 35%);
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.badge {
+    display: inline-block;
+    background: #4c1d95;
+    color: #ddd6fe;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #8b5cf6;
+}
+
+.hero p {
+    color: #cbd5e1;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+
+/* Search */
+
+.search-box {
+    display: flex;
+    background: white;
+    padding: 6px;
+    border-radius: 10px;
+    max-width: 550px;
+    margin-bottom: 22px;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px;
+    font-size: 14px;
+}
+
+.search-box button {
+    border: none;
+    background: #7c3aed;
+    color: white;
+    padding: 13px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #6d28d9;
+}
+
+
+/* Get Started */
+
+.main-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(90deg, #6d28d9, #8b5cf6);
+    padding: 14px 25px;
+    border-radius: 9px;
+    font-weight: 600;
+}
+
+.main-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* Match Card */
+
+.match-card {
+    width: 340px;
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid #6d28d9;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 0 40px rgba(124,58,237,0.25);
+}
+
+.card-title {
+    color: #c4b5fd;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.student {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #172033;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #7c3aed;
+    font-weight: bold;
+}
+
+.second {
+    background: #9333ea;
+}
+
+.student h3 {
+    font-size: 15px;
+}
+
+.student p {
+    font-size: 12px;
+    color: #94a3b8;
+    margin: 2px 0;
+}
+
+.match {
+    text-align: center;
+    margin: 12px 0;
+}
+
+.match strong {
+    font-size: 28px;
+    color: #a78bfa;
+    display: block;
+}
+
+.match span {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.connect-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #7c3aed;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* Features */
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px 10%;
+}
+
+.feature {
+    width: 280px;
+    padding: 25px;
+    background: #172033;
+    border: 1px solid #334155;
+    border-radius: 15px;
+}
+
+.feature span {
+    font-size: 25px;
+}
+
+.feature h3 {
+    margin: 10px 0;
+}
+
+.feature p {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .search-box {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.skill-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.skill-item button {
+    border: none;
+    background: transparent;
+    color: #ef4444;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.skill-item button:hover {
+    color: #dc2626;
+}
+
+
+.success-message {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    background: #7c3aed;
+    color: white;
+
+    padding: 15px 22px;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+    animation: slideIn 0.3s ease;
+    z-index: 9999;
+}
+
+
+@keyframes slideIn {
+
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+}

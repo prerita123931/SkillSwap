@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SkillSwap - Sign Up</title>
+
+    <link rel="stylesheet"
+          href="css/auth.css">
+
+</head>
+
+
+<body>
+
+    <div class="auth-container">
+
+        <div class="auth-card">
+
+
+            <!-- LOGO -->
+
+            <div class="logo">
+                ⇄Skill<span>Swap</span>
+            </div>
+
+
+            <!-- HEADING -->
+
+            <h1>Create Your Account</h1>
+
+            <p class="subtitle">
+                Start learning and teaching with SkillSwap
+            </p>
+
+
+            <!-- SIGNUP FORM -->
+
+            <form id="signupForm">
+
+
+                <!-- FULL NAME -->
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+
+                <!-- EMAIL -->
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <!-- COLLEGE -->
+
+                <label for="college">
+                    College
+                </label>
+
+                <input
+                    type="text"
+                    id="college"
+                    name="college"
+                    placeholder="Enter your college name"
+                    required
+                >
+
+
+                <!-- PASSWORD -->
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required
+                >
+
+
+                <!-- BUTTON -->
+
+                <button type="submit">
+                    Create Account
+                </button>
+
+
+            </form>
+
+
+            <!-- LOGIN LINK -->
+
+            <p class="bottom-text">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- SIGNUP JAVASCRIPT -->
+
+    <script>
+
+        const signupForm =
+            document.getElementById("signupForm");
+
+
+        signupForm.addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+
+                // Get form values
+
+                const name =
+                    document.getElementById("name").value.trim();
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const college =
+                    document.getElementById("college").value.trim();
+
+                const password =
+                    document.getElementById("password").value;
+
+
+                // Basic validation
+
+                if (
+                    name === "" ||
+                    email === "" ||
+                    college === "" ||
+                    password === ""
+                ) {
+
+                    alert(
+                        "Please fill all fields."
+                    );
+
+                    return;
+
+                }
+
+
+                // Password length
+
+                if (password.length < 6) {
+
+                    alert(
+                        "Password must be at least 6 characters."
+                    );
+
+                    return;
+
+                }
+
+
+                try {
+
+
+                    // Send data to Node.js
+
+                    const response =
+                        await fetch(
+                            "http://localhost:5000/api/signup",
+                            {
+
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+
+                                    name: name,
+
+                                    email: email,
+
+                                    college: college,
+
+                                    password: password
+
+                                })
+
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    // Successful signup
+
+                    if (data.success) {
+
+
+                        // Save user ID
+
+                        localStorage.setItem(
+                            "userId",
+                            data.userId
+                        );
+
+
+                        // Save user name
+
+                        localStorage.setItem(
+                            "userName",
+                            name
+                        );
+
+
+                        alert(
+                            "Account created successfully! 🎉"
+                        );
+
+
+                        // Go to skills page
+
+                        window.location.href =
+                            "skills.html";
+
+
+                    }
+
+                    else {
+
+
+                        alert(
+                            data.message
+                        );
+
+
+                    }
+
+
+                }
+
+                catch (error) {
+
+
+                    console.error(
+                        "Signup Error:",
+                        error
+                    );
+
+
+                    alert(
+                        "Server se connection nahi ho raha.\n\n" +
+                        "Please make sure your Node.js server is running."
+                    );
+
+
+                }
+
+            }
+
+        );
+
+    </script>
+
+
+</body>
+
+</html>

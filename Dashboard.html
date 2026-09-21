@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">⇄Skill<span>Swap</span>
+        </div>
+
+        <nav>
+            <a class="active" href="dashboard.html">🏠 Dashboard</a>
+            <a href="profile.html">👤 My Profile</a>
+            <a href="matches.html">🤝 Smart Matches</a>
+            <a href="chat.html">💬 Chat</a>
+            <a href="rating-feedback.html">⭐ Feedback</a>
+        </nav>
+
+        <a href="login.html" class="logout">↪ Logout</a>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+
+            <div>
+                <h1>Welcome back👋</h1>
+                <p>Continue your learning journey today.</p>
+            </div>
+
+            <a href="profile.html" class="profile-circle">P</a>
+
+        </header>
+        <section class="stats">
+
+            <div class="stat-card">
+                <span>📚</span>
+                <h2>4</h2>
+                <p>Skills I Teach</p>
+            </div>
+
+            <div class="stat-card">
+                <span>🎯</span>
+                <h2>3</h2>
+                <p>Skills I Want</p>
+            </div>
+
+            <div class="stat-card">
+                <span>🤝</span>
+                <h2>12</h2>
+                <p>Skill Matches</p>
+            </div>
+
+            <div class="stat-card">
+                <span>⭐</span>
+                <h2>4.8</h2>
+                <p>My Rating</p>
+            </div>
+
+        </section>
+
+
+        <!-- Skills Section -->
+        <div class="card">
+            <div class="card-header">
+                <h2>My Skills</h2>
+                <button onclick="addSkill('teach')">+ Add Skill</button>
+            </div>
+            <div class="skills" id="teachSkills">
+                <span class="skill-item">JavaScript
+                    <button onclick="deleteSkill(this)">×</button>
+                </span>
+                <span class="skill-item">HTML
+                    <button onclick="deleteSkill(this)">×</button>
+                </span>
+                <span class="skill-item">CSS
+                    <button onclick="deleteSkill(this)">×</button>
+                </span>
+            </div>
+        </div>
+        <div class="card">
+
+    <div class="card-header">
+        <h2>Skills I Want</h2>
+        <button onclick="addSkill('want')">+ Add Skill</button>
+    </div>
+
+    <div class="skills want" id="wantSkills">
+
+        <span class="skill-item">
+            c++
+            <button onclick="deleteSkill(this)">×</button>
+        </span>
+
+        <span class="skill-item">
+            hibernate
+            <button onclick="deleteSkill(this)">×</button>
+        </span>
+
+        <span class="skill-item">
+            UI/UX
+            <button onclick="deleteSkill(this)">×</button>
+        </span>
+
+    </div>
+
+</div>
+
+        </section>
+
+
+        <!-- Smart Matches -->
+        <section class="card matches">
+
+            <div class="card-header">
+                <div>
+                    <h2>✨ Suggested Matches</h2>
+                    <p>People who can teach what you want to learn.</p>
+                </div>
+
+                <a href="matches.html">View All →</a>
+            </div>
+
+
+            <div class="match-list">
+
+                <div class="match-user">
+
+                    <div class="avatar">R</div>
+
+                    <div class="user-info">
+                        <h3>Rahul Sharma</h3>
+                        <p>Teaches: Python</p>
+                        <p>Wants: JavaScript</p>
+                    </div>
+
+                    <div class="match-score">
+                        <strong>Strong</strong>
+                        <small>Match</small>
+                    </div>
+                    <button class="connect" onclick="connectUser('Rahul Sharma')">Connect</button>
+                </div>
+
+
+                <div class="match-user">
+
+                    <div class="avatar">A</div>
+
+                    <div class="user-info">
+                        <h3>Ananya Singh</h3>
+                        <p>Teaches: MongoDB</p>
+                        <p>Wants: Node.js</p>
+                    </div>
+
+                    <div class="match-score">
+                        <strong>89%</strong>
+                        <small>Match</small>
+                    </div>
+                    <button class="connect" onclick="connectUser('Rahul Sharma')">Connect</button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Upcoming Session -->
+        <section class="card session">
+
+            <div class="card-header">
+                <div>
+                    <h2>📅 Upcoming Session</h2>
+                    <p>Your next learning session</p>
+                </div>
+            </div>
+
+            <div class="session-box">
+
+                <div>
+                    <h3>Python Basics with Rahul</h3>
+                    <p>📅 15 September 2026 &nbsp; | &nbsp; 🕐 6:00 PM</p>
+                </div>
+                <button onclick="joinSession()">Join Session</button>
+            </div>
+
+        </section>
+    </main>
+     <script>
+            function addSkill(type) {
+
+    const skill = prompt("Enter the skill:");
+
+    if (!skill || skill.trim() === "") {
+        return;
+    }
+
+    const skillContainer =
+        type === "teach"
+            ? document.getElementById("teachSkills")
+            : document.getElementById("wantSkills");
+
+    const skillItem = document.createElement("span");
+
+    skillItem.className = "skill-item";
+
+    skillItem.innerHTML = `
+        ${skill.trim()}
+        <button onclick="deleteSkill(this)">×</button>
+    `;
+
+    skillContainer.appendChild(skillItem);
+}
+
+
+function deleteSkill(button) {
+
+    const skillItem = button.parentElement;
+
+    skillItem.remove();
+
+    showMessage("Skill deleted successfully!");
+}
+
+
+function connectUser(name) {
+
+    showMessage(`Connection request sent to ${name}! 🤝`);
+}
+
+
+function joinSession() {
+
+    showMessage("You have joined the session successfully! 📅");
+}
+
+
+function showMessage(message) {
+
+    const messageBox = document.createElement("div");
+
+    messageBox.className = "success-message";
+
+    messageBox.innerText = message;
+
+    document.body.appendChild(messageBox);
+
+    setTimeout(() => {
+        messageBox.remove();
+    }, 3000);
+}
+        </script>
+
+</body>
+</html>

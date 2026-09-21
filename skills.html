@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Skills - SkillSwap</title>
+
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background-color: #f8f9fa;
+
+            margin: 0;
+
+            padding: 0;
+
+            color: #333;
+        }
+
+
+        .page-content {
+
+            padding: 30px;
+        }
+
+
+        .page-header {
+
+            margin-bottom: 25px;
+        }
+
+
+        .page-header h1 {
+
+            margin: 0 0 5px 0;
+
+            font-size: 28px;
+
+            color: #222;
+        }
+
+
+        .page-header p {
+
+            margin: 0;
+
+            color: #666;
+        }
+
+
+        .add-skill-box {
+
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+
+            margin-bottom: 25px;
+        }
+
+
+        .add-skill-box h3 {
+
+            margin-top: 0;
+
+            color: #222;
+        }
+
+
+        .skill-input {
+
+            display: flex;
+
+            gap: 10px;
+        }
+
+
+        .skill-input input {
+
+            flex: 1;
+
+            padding: 12px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 8px;
+
+            outline: none;
+
+            color: #333;
+
+            background: #fff;
+        }
+
+
+        .add-btn {
+
+            padding: 12px 20px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #5b5be7;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-weight: 600;
+        }
+
+
+        .add-btn:hover {
+
+            background: #4646d8;
+        }
+
+
+        .skills-container {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+
+        .skills-container h3 {
+
+            margin-top: 0;
+
+            margin-bottom: 20px;
+
+            color: #222;
+        }
+
+
+        .skills-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(180px, 1fr));
+
+            gap: 15px;
+        }
+
+
+        .skill-card {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 15px;
+
+            background: #f6f7ff;
+
+            border-radius: 10px;
+
+            border: 1px solid #e5e7ff;
+        }
+
+
+        .skill-name {
+
+            font-weight: 600;
+
+            color: #333 !important;
+        }
+
+
+        .delete-btn {
+
+            border: none;
+
+            background: #ffe5e5;
+
+            color: #d63031;
+
+            padding: 6px 10px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-weight: 500;
+        }
+
+
+        .delete-btn:hover {
+
+            background: #ffd1d1;
+        }
+
+
+        .empty-message {
+
+            color: #777;
+
+            text-align: center;
+
+            padding: 30px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="page-content">
+
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+        <h1>
+            Manage Skills
+        </h1>
+
+        <p>
+            Add and manage skills available on the SkillSwap platform.
+        </p>
+
+    </div>
+
+
+
+    <!-- ADD SKILL -->
+
+    <div class="add-skill-box">
+
+        <h3>
+            Add New Skill
+        </h3>
+
+
+        <div class="skill-input">
+
+            <input
+                type="text"
+                id="skillInput"
+                placeholder="Enter skill name..."
+            >
+
+
+            <button
+                class="add-btn"
+                onclick="addSkill()"
+            >
+                + Add Skill
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- AVAILABLE SKILLS -->
+
+    <div class="skills-container">
+
+        <h3>
+            Available Skills
+        </h3>
+
+
+        <div
+            class="skills-grid"
+            id="skillsGrid"
+        >
+
+            <!-- MySQL skills yahan automatically load hongi -->
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+// =====================================================
+// PAGE LOAD HOTE HI MYSQL SE SKILLS LAO
+// =====================================================
+
+loadSkills();
+
+
+
+async function loadSkills() {
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/skills"
+        );
+
+
+        const data = await response.json();
+
+
+        if (!data.success) {
+
+            alert(data.message);
+
+            return;
+        }
+
+
+        const grid =
+            document.getElementById("skillsGrid");
+
+
+        grid.innerHTML = "";
+
+
+        if (data.skills.length === 0) {
+
+            grid.innerHTML = `
+                <div class="empty-message">
+                    No skills available.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        data.skills.forEach(skill => {
+
+            createSkillCard(skill);
+
+        });
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        document.getElementById(
+            "skillsGrid"
+        ).innerHTML = `
+            <div class="empty-message">
+                Server se connection nahi ho raha.
+                <br><br>
+                Please start server.js.
+            </div>
+        `;
+
+    }
+
+}
+
+
+
+// =====================================================
+// SKILL CARD BANANA
+// =====================================================
+
+function createSkillCard(skill) {
+
+
+    const grid =
+        document.getElementById("skillsGrid");
+
+
+    const card =
+        document.createElement("div");
+
+
+    card.className =
+        "skill-card";
+
+
+    card.setAttribute(
+        "data-id",
+        skill.id
+    );
+
+
+    card.innerHTML = `
+
+        <span class="skill-name">
+            ${skill.skill_name}
+        </span>
+
+        <button
+            class="delete-btn"
+            onclick="deleteSkill(${skill.id}, this)"
+        >
+            Delete
+        </button>
+
+    `;
+
+
+    grid.appendChild(card);
+
+}
+
+
+
+// =====================================================
+// NEW SKILL ADD KARNA
+// =====================================================
+
+async function addSkill() {
+
+
+    const input =
+        document.getElementById("skillInput");
+
+
+    const skill =
+        input.value.trim();
+
+
+    if (skill === "") {
+
+        alert(
+            "Please enter a skill name."
+        );
+
+        return;
+    }
+
+
+    try {
+
+
+        const response =
+            await fetch(
+                "http://localhost:5000/api/skills",
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        skill_name: skill
+
+                    })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (data.success) {
+
+
+            alert(
+                "Skill added successfully! 🎉"
+            );
+
+
+            input.value = "";
+
+
+            // Database se latest skills load karo
+
+            loadSkills();
+
+
+        } else {
+
+
+            alert(
+                data.message
+            );
+
+        }
+
+
+    } catch (error) {
+
+
+        console.error(
+            "Add Skill Error:",
+            error
+        );
+
+
+        alert(
+            "Server se connection nahi ho raha."
+        );
+
+    }
+
+}
+
+
+
+// =====================================================
+// DELETE SKILL
+// =====================================================
+
+async function deleteSkill(
+    skillId,
+    button
+) {
+
+
+    const card =
+        button.closest(".skill-card");
+
+
+    const skillName =
+        card.querySelector(
+            ".skill-name"
+        ).innerText;
+
+
+    const confirmDelete =
+        confirm(
+            "Delete " +
+            skillName +
+            "?"
+        );
+
+
+    if (!confirmDelete) {
+
+        return;
+    }
+
+
+    try {
+
+
+        const response =
+            await fetch(
+                "http://localhost:5000/api/skills/" +
+                skillId,
+                {
+
+                    method: "DELETE"
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (data.success) {
+
+
+            alert(
+                "Skill deleted successfully."
+            );
+
+
+            loadSkills();
+
+
+        } else {
+
+
+            alert(
+                data.message
+            );
+
+        }
+
+
+    } catch (error) {
+
+
+        console.error(
+            "Delete Skill Error:",
+            error
+        );
+
+
+        alert(
+            "Server se connection nahi ho raha."
+        );
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

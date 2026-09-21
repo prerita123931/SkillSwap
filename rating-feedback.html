@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating & Feedback - SkillSwap</title>
+    <link rel="stylesheet" href="css/rating-feedback.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">⇄Skill<span>Swap</span></div>
+
+        <nav>
+            <a href="admin-dashboard.html">🏠 Dashboard</a>
+            <a href="matches.html">🔍 Skill Matches</a>
+            <a href="chat.html">💬 Chat</a>
+            <a href="rating-feedback.html" class="active">⭐ Rating & Feedback</a>
+            <a href="profile.html">👤 Profile</a>
+        </nav>
+
+        <div class="logout">
+            <a href="#">↪️ Logout</a>
+        </div>
+    </aside>
+
+
+    <!-- Main Content -->
+    <main>
+
+        <header>
+            <div>
+                <h1>Rating & Feedback</h1>
+                <p>Share your experience and help the SkillSwap community grow.</p>
+            </div>
+
+            <div class="profile">
+                <div class="avatar">P</div>
+                <span>Prerita</span>
+            </div>
+        </header>
+
+
+        <!-- Page Content -->
+        <section class="content">
+
+            <!-- Left: Give Feedback -->
+            <div class="feedback-card">
+
+                <h2>Rate Your Learning Session</h2>
+                <p class="subtitle">
+                    Your feedback helps other students find reliable learning partners.
+                </p>
+
+                <div class="session-info">
+                    <div class="person-avatar">R</div>
+
+                    <div>
+                        <h3>Rahul Sharma</h3>
+                        <p>Python ↔️ JavaScript</p>
+                        <span>Session completed • Today</span>
+                    </div>
+                </div>
+
+
+                <div class="rating-section">
+                    <h3>How was your experience?</h3>
+
+                    <div class="stars" id="stars">
+                        <span data-rating="1">★</span>
+                        <span data-rating="2">★</span>
+                        <span data-rating="3">★</span>
+                        <span data-rating="4">★</span>
+                        <span data-rating="5">★</span>
+                    </div>
+
+                    <p id="ratingText">Select a rating</p>
+                </div>
+
+
+                <div class="feedback-section">
+                    <label for="feedback">Write your feedback</label>
+
+                    <textarea
+                        id="feedback"
+                        placeholder="Tell us about your learning experience..."
+                        maxlength="300"></textarea>
+
+                    <div class="character-count">
+                        <span id="count">0</span>/300
+                    </div>
+                </div>
+
+
+                <div class="recommend">
+                    <span>Would you recommend this learning partner?</span>
+
+                    <label>
+                        <input type="radio" name="recommend" value="yes">
+                        Yes
+                    </label>
+
+                    <label>
+                        <input type="radio" name="recommend" value="no">
+                        No
+                    </label>
+                </div>
+
+
+                <button class="submit-btn" onclick="submitFeedback()">
+                    Submit Feedback
+                </button>
+
+            </div>
+
+
+            <!-- Right: Rating Summary -->
+            <div class="right-column">
+
+                <div class="summary-card">
+                    <h2>Community Rating</h2>
+
+                    <div class="rating-number">
+                        <strong>4.8</strong>
+                        <div>
+                            <div class="small-stars">★★★★★</div>
+                            <span>Based on 128 reviews</span>
+                        </div>
+                    </div>
+
+                    <div class="rating-bars">
+
+                        <div class="bar-row">
+                            <span>5 ★</span>
+                            <div class="bar">
+                                <div style="width: 82%;"></div>
+                            </div>
+                            <span>82%</span>
+                        </div>
+
+                        <div class="bar-row">
+                            <span>4 ★</span>
+                            <div class="bar">
+                                <div style="width: 12%;"></div>
+                            </div>
+                            <span>12%</span>
+                        </div>
+
+                        <div class="bar-row">
+                            <span>3 ★</span>
+                            <div class="bar">
+                                <div style="width: 4%;"></div>
+                            </div>
+                            <span>4%</span>
+                        </div>
+
+                        <div class="bar-row">
+                            <span>2 ★</span>
+                            <div class="bar">
+                                <div style="width: 1%;"></div>
+                            </div>
+                            <span>1%</span>
+                        </div>
+
+                        <div class="bar-row">
+                            <span>1 ★</span>
+                            <div class="bar">
+                                <div style="width: 1%;"></div>
+                            </div>
+                            <span>1%</span>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Previous Reviews -->
+                <div class="reviews-card">
+
+                    <div class="reviews-header">
+                        <h2>Recent Feedback</h2>
+                        <a href="#">View All</a>
+                    </div>
+
+                    <div class="review">
+                        <div class="review-avatar">A</div>
+
+                        <div>
+                            <div class="review-top">
+                                <strong>Ananya Verma</strong>
+                                <span>★★★★★</span>
+                            </div>
+
+                            <p>
+                                Rahul explained Python concepts very clearly.
+                                Great learning session!
+                            </p>
+
+                            <small>2 days ago</small>
+                        </div>
+                    </div>
+
+
+                    <div class="review">
+                        <div class="review-avatar">K</div>
+
+                        <div>
+                            <div class="review-top">
+                                <strong>Karan Patel</strong>
+                                <span>★★★★☆</span>
+                            </div>
+                                <p>
+                                Helpful session and easy to communicate with.
+                            </p>
+
+                            <small>5 days ago</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="rating-feedback.js"></script>
+
+</body>
+</html>

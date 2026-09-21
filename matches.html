@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Skills - SkillSwap</title>
+    <link rel="stylesheet" href="css/matches.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            ⇄Skill<span>Swap</span>
+        </div>
+
+        <nav>
+            <a href="admin-dashboard.html">🏠 Dashboard</a>
+            <a href="matching-skills.html" class="active">🔍 Matching Skills</a>
+            <a href="chat.html">💬 Chat</a>
+            <a href="rating-feedback.html">⭐ Rating & Feedback</a>
+            <a href="profile.html">👤 Profile</a>
+        </nav>
+
+        <div class="logout">
+            <a href="#">↪️ Logout</a>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Header -->
+        <header>
+
+            <div>
+                <h1>Matching Skills</h1>
+                <p>Find students who can teach what you want to learn.</p>
+            </div>
+                <a href="profile.html" class="profile-circle">P</a>
+
+        </header>
+
+
+        <!-- Your Skills -->
+        <section class="your-skills">
+
+            <div class="skill-box">
+                <h3>🎓 I Can Teach</h3>
+
+                <div class="tags">
+                    <span>JavaScript</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                </div>
+            </div>
+
+
+            <div class="skill-box">
+                <h3>📚 I Want To Learn</h3>
+
+                <div class="tags">
+                    <span>Python</span>
+                    <span>React</span>
+                    <span>Node.js</span>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Search and Filter -->
+        <section class="search-section">
+
+            <div class="search-box">
+                🔍
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by name or skill..."
+                >
+            </div>
+
+            <select id="skillFilter">
+                <option value="all">All Skills</option>
+                <option value="python">Python</option>
+                <option value="react">React</option>
+                <option value="node.js">Node.js</option>
+                <option value="java">Java</option>
+            </select>
+
+            <select id="availabilityFilter">
+                <option value="all">Any Availability</option>
+                <option value="weekdays">Weekdays</option>
+                <option value="weekends">Weekends</option>
+                <option value="evening">Evening</option>
+            </select>
+
+        </section>
+
+
+        <!-- Results Header -->
+        <div class="results-header">
+            <div>
+                <h2>Best Matches</h2>
+                <p>Based on your skills, goals and availability</p>
+            </div>
+
+            <span id="resultCount">4 matches found</span>
+        </div>
+
+
+        <!-- Match Cards -->
+        <section class="matches" id="matches">
+
+
+            <!-- Rahul -->
+            <div class="match-card"
+                 data-name="Rahul Sharma"
+                 data-skills="python javascript"
+                 data-availability="weekends evening">
+
+                <div class="card-top">
+
+                    <div class="person">
+
+                        <div class="person-avatar purple">
+                            R
+                        </div>
+
+                        <div>
+                            <h3>Rahul Sharma</h3>
+                            <p>Computer Science Student</p>
+                        </div>
+                         </div>
+
+                    <div class="match-score">
+                        <strong>94%</strong>
+                        <span>Match</span>
+                    </div>
+
+                </div>
+
+
+                <div class="exchange">
+
+                    <div>
+                        <label>CAN TEACH YOU</label>
+                        <div class="skill">Python</div>
+                    </div>
+
+                    <div class="exchange-icon">⇄</div>
+
+                    <div>
+                        <label>WANTS TO LEARN</label>
+                        <div class="skill">JavaScript</div>
+                    </div>
+
+                </div>
+
+
+                <div class="details">
+                    <span>🕐 Weekends</span>
+                    <span>🎯 Intermediate</span>
+                    <span>💻 Online</span>
+                </div>
+
+                <button onclick="connectUser('Rahul Sharma')">
+                    Connect
+                </button>
+
+            </div>
+
+
+            <!-- Ananya -->
+            <div class="match-card"
+                 data-name="Ananya Verma"
+                 data-skills="react javascript"
+                 data-availability="weekdays evening">
+
+                <div class="card-top">
+
+                    <div class="person">
+
+                        <div class="person-avatar pink">
+                            A
+                        </div>
+
+                        <div>
+                            <h3>Ananya Verma</h3>
+                            <p>UI/UX & Frontend Developer</p>
+                        </div>
+
+                    </div>
+
+                    <div class="match-score">
+                        <strong>89%</strong>
+                        <span>Match</span>
+                    </div>
+
+                </div>
+
+
+                <div class="exchange">
+
+                    <div>
+                        <label>CAN TEACH YOU</label>
+                        <div class="skill">React</div>
+                    </div>
+
+                    <div class="exchange-icon">⇄</div>
+
+                    <div>
+                        <label>WANTS TO LEARN</label>
+                        <div class="skill">JavaScript</div>
+                    </div>
+
+                </div>
+
+
+                <div class="details">
+                    <span>🕐 Weekdays</span>
+                    <span>🎯 Beginner</span>
+                    <span>💻 Online</span>
+                </div>
+
+                <button onclick="connectUser('Ananya Verma')">
+                    Connect
+                </button>
+
+            </div>
+
+
+            <!-- Karan -->
+            <div class="match-card"
+                 data-name="Karan Patel"
+                 data-skills="java python"
+                 data-availability="weekends">
+
+                <div class="card-top">
+
+                    <div class="person">
+
+                        <div class="person-avatar blue">
+                            K
+                        </div>
+
+                        <div>
+                            <h3>Karan Patel</h3>   <p>Backend Developer</p>
+                        </div>
+
+                    </div>
+
+                    <div class="match-score">
+                        <strong>85%</strong>
+                        <span>Match</span>
+                    </div>
+
+                </div>
+
+
+                <div class="exchange">
+
+                    <div>
+                        <label>CAN TEACH YOU</label>
+                        <div class="skill">Java</div>
+                    </div>
+
+                    <div class="exchange-icon">⇄</div>
+
+                    <div>
+                        <label>WANTS TO LEARN</label>
+                        <div class="skill">JavaScript</div>
+                    </div>
+
+                </div>
+
+
+                <div class="details">
+                    <span>🕐 Weekends</span>
+                    <span>🎯 Advanced</span>
+                    <span>💻 Online</span>
+                </div>
+
+                <button onclick="connectUser('Karan Patel')">
+                    Connect
+                </button>
+
+            </div>
+
+
+            <!-- Neha -->
+            <div class="match-card"
+                 data-name="Neha Singh"
+                 data-skills="node.js python"
+                 data-availability="evening">
+
+                <div class="card-top">
+
+                    <div class="person">
+
+                        <div class="person-avatar green">
+                            N
+                        </div>
+
+                        <div>
+                            <h3>Neha Singh</h3>
+                            <p>Full Stack Developer</p>
+                        </div>
+
+                    </div>
+
+                    <div class="match-score">
+                        <strong>78%</strong>
+                        <span>Match</span>
+                    </div>
+
+                </div>
+
+
+                <div class="exchange">
+
+                    <div>
+                        <label>CAN TEACH YOU</label>
+                        <div class="skill">Node.js</div>
+                    </div>
+
+                    <div class="exchange-icon">⇄</div>
+
+                    <div>
+                        <label>WANTS TO LEARN</label>
+                        <div class="skill">JavaScript</div>
+                    </div>
+
+                </div>
+
+
+                <div class="details">
+                    <span>🕐 Evening</span>
+                    <span>🎯 Intermediate</span>
+                    <span>💻 Online</span>
+                </div>
+
+                <button onclick="connectUser('Neha Singh')">
+                    Connect
+                </button>
+
+            </div>
+
+        </section>
+
+        <div id="noResults" class="no-results">
+            No matching students found.
+        </div>
+
+    </main>
+
+    <script src="js/matches.js"></script>
+
+</body>
+</html>
