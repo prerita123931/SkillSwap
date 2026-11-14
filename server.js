@@ -22,10 +22,11 @@ app.use(express.static(__dirname));
 // ===============================
 
 const db = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "prerita",
-    database: "skillswap"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT || 3306
 });
 
 
@@ -554,7 +555,7 @@ app.get("/api/matches", async (req, res) => {
 // START SERVER
 // ===============================
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 const server = app.listen(PORT, "0.0.0.0", () => {
     console.log(`SkillSwap server running at http://localhost:${PORT}`);
